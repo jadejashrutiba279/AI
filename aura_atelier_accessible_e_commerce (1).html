@@ -1,0 +1,1705 @@
+<!DOCTYPE html>
+<html lang="en" class="h-full scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AURA Atelier | Sustainable & Accessible Modern Apparel</title>
+    <meta name="description" content="AURA Atelier offers sustainable, modern, high-quality fashion crafted with ethical standards. Shop coats, knitwear, denim, dresses, footwear, and accessories.">
+    
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Lucide Icons CDN -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- Google Fonts: Inter -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        aura: {
+                            50: '#FAF8F5',
+                            100: '#F3EFEA',
+                            200: '#E5DDD3',
+                            700: '#4A4036',
+                            800: '#2C2723',
+                            900: '#181513',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        /* WCAG Compliant Visible Focus Styles */
+        :focus-visible {
+            outline: 3px solid #181513 !important;
+            outline-offset: 3px !important;
+        }
+
+        /* High Contrast Theme Overrides */
+        .high-contrast {
+            background-color: #000000 !important;
+            color: #FFFFFF !important;
+        }
+        .high-contrast header,
+        .high-contrast footer,
+        .high-contrast nav,
+        .high-contrast section,
+        .high-contrast article,
+        .high-contrast .card,
+        .high-contrast div {
+            border-color: #FFFFFF !important;
+        }
+        .high-contrast button, 
+        .high-contrast a,
+        .high-contrast input,
+        .high-contrast select {
+            outline: 2px solid #FFFFFF !important;
+        }
+        .high-contrast :focus-visible {
+            outline: 4px solid #FFFF00 !important;
+            outline-offset: 4px !important;
+        }
+        
+        /* Custom scrollbars */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #F3EFEA;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #2C2723;
+            border-radius: 4px;
+        }
+    </style>
+</head>
+<body class="bg-aura-50 text-aura-900 font-sans antialiased flex flex-col min-h-full transition-colors duration-200">
+
+    <!-- ARIA Live Region for Screen Reader Announcements -->
+    <div id="sr-announcer" class="sr-only" aria-live="polite" aria-atomic="true"></div>
+
+    <!-- Skip to Main Content Link (WCAG 2.4.1) -->
+    <a href="#main-content" class="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-50 focus:px-6 focus:py-3 focus:bg-aura-900 focus:text-white focus:rounded-xl focus:shadow-2xl focus:font-bold">
+        Skip to main content
+    </a>
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-aura-900 text-stone-200 text-xs font-semibold tracking-wider text-center py-2.5 px-4 flex justify-between items-center border-b border-stone-800">
+        <span class="mx-auto">Complimentary worldwide carbon-neutral shipping on orders over $100 | Code: <strong class="text-white underline">WELCOME10</strong></span>
+        <button onclick="toggleHighContrast()" id="hc-toggle-btn" aria-label="Toggle High Contrast Theme Mode" class="text-xs bg-stone-800 hover:bg-stone-700 text-white px-3 py-1 rounded-md border border-stone-600 transition-colors hidden sm:block">
+            High Contrast: Off
+        </button>
+    </div>
+
+    <header class="sticky top-0 z-40 bg-aura-50/95 backdrop-blur-md border-b border-aura-200" role="banner">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
+                
+                <!-- Mobile Navigation Toggle -->
+                <button onclick="toggleMobileMenu()" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-nav-drawer" aria-label="Open main navigation menu" class="lg:hidden p-2 text-aura-900 hover:bg-aura-200 rounded-lg">
+                    <i data-lucide="menu" class="w-6 h-6" aria-hidden="true"></i>
+                </button>
+
+                <!-- Brand Logo -->
+                <a href="#home" onclick="navigateTo('home'); return false;" class="flex items-center gap-2 text-2xl font-extrabold tracking-[0.25em] text-aura-900 focus:outline-none" aria-label="AURA Atelier Home Page">
+                    <span>AURA</span>
+                </a>
+
+                <!-- Desktop Primary Navigation -->
+                <nav class="hidden lg:flex items-center space-x-8 text-xs font-bold tracking-widest uppercase" aria-label="Primary Navigation">
+                    <a href="#home" onclick="navigateTo('home'); return false;" class="nav-btn py-1 text-aura-900 hover:text-stone-600" data-page="home" aria-current="page">Home</a>
+                    <a href="#shop" onclick="navigateTo('shop'); return false;" class="nav-btn py-1 text-aura-900 hover:text-stone-600" data-page="shop">Shop Catalog</a>
+                    <a href="#wishlist" onclick="navigateTo('wishlist'); return false;" class="nav-btn py-1 text-aura-900 hover:text-stone-600" data-page="wishlist">Wishlist</a>
+                    <a href="#about" onclick="navigateTo('about'); return false;" class="nav-btn py-1 text-aura-900 hover:text-stone-600" data-page="about">Sustainability</a>
+                    <a href="#contact" onclick="navigateTo('contact'); return false;" class="nav-btn py-1 text-aura-900 hover:text-stone-600" data-page="contact">Contact</a>
+                </nav>
+
+                <!-- Quick Utility Actions -->
+                <div class="flex items-center space-x-3 sm:space-x-4">
+                    <button onclick="toggleHighContrast()" aria-label="Toggle High Contrast Mode" class="sm:hidden p-2 text-aura-900 hover:bg-aura-200 rounded-lg">
+                        <i data-lucide="sun" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+
+                    <button onclick="navigateTo('wishlist')" class="relative p-2 text-aura-900 hover:bg-aura-200 rounded-lg" aria-label="View Saved Wishlist">
+                        <i data-lucide="heart" class="w-5 h-5" aria-hidden="true"></i>
+                        <span id="wishlist-badge" class="absolute -top-1 -right-1 bg-amber-700 text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                    </button>
+
+                    <button onclick="toggleCartDrawer()" id="cart-drawer-toggle" aria-expanded="false" aria-controls="cart-drawer" class="relative p-2 text-aura-900 hover:bg-aura-200 rounded-lg" aria-label="View Shopping Cart">
+                        <i data-lucide="shopping-bag" class="w-5 h-5" aria-hidden="true"></i>
+                        <span id="cart-badge" class="absolute -top-1 -right-1 bg-aura-900 text-white text-[10px] font-extrabold w-4 h-4 rounded-full flex items-center justify-center opacity-0 transition-opacity">0</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Accessible Mobile Drawer Menu -->
+        <div id="mobile-nav-drawer" class="hidden lg:hidden border-b border-aura-200 bg-aura-50 px-6 py-6 space-y-4" role="navigation" aria-label="Mobile Navigation">
+            <a href="#home" onclick="navigateTo('home'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900 border-b border-aura-200 pb-2">Home</a>
+            <a href="#shop" onclick="navigateTo('shop'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900 border-b border-aura-200 pb-2">Shop Catalog</a>
+            <a href="#wishlist" onclick="navigateTo('wishlist'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900 border-b border-aura-200 pb-2">Saved Wishlist</a>
+            <a href="#cart" onclick="navigateTo('cart'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900 border-b border-aura-200 pb-2">Shopping Bag</a>
+            <a href="#about" onclick="navigateTo('about'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900 border-b border-aura-200 pb-2">About & Sustainability</a>
+            <a href="#contact" onclick="navigateTo('contact'); toggleMobileMenu(); return false;" class="block text-base font-bold text-aura-900">Contact Us</a>
+        </div>
+    </header>
+
+    <main id="main-content" class="flex-grow" tabindex="-1" role="main">
+        
+        <!-- PAGE 1: HOME PAGE -->
+        <section id="page-home" class="page-view space-y-16 pb-16">
+            <!-- Hero Section -->
+            <div class="relative bg-aura-900 text-white overflow-hidden min-h-[580px] lg:min-h-[680px] flex items-center">
+                <div class="absolute inset-0 z-0">
+                    <img src="watermarked_img_6569218627333504882.png" 
+                         onerror="this.src='https://images.unsplash.com/photo-1490481651871-ab68de25d43d?q=80&w=1600&auto=format&fit=crop'" 
+                         alt="Models walking in modern sustainable urban clothing" 
+                         class="w-full h-full object-cover object-center opacity-65">
+                    <div class="absolute inset-0 bg-gradient-to-r from-black/85 via-black/50 to-transparent"></div>
+                </div>
+
+                <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+                    <div class="max-w-2xl space-y-6">
+                        <span class="inline-block uppercase tracking-[0.2em] text-xs font-bold text-amber-300">Sustainable Autumn / Winter '26 Collection</span>
+                        <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight leading-tight text-white">
+                            Elevate Your Everyday Style & Utility.
+                        </h1>
+                        <p class="text-lg text-stone-200 font-normal leading-relaxed">
+                            Explore over 24 ethically crafted garments built with organic textiles, tailored silhouettes, and accessible minimalist design.
+                        </p>
+                        <div class="flex flex-wrap gap-4 pt-4">
+                            <a href="#shop" onclick="navigateTo('shop'); return false;" class="px-8 py-4 bg-white text-aura-900 font-extrabold text-sm rounded-xl hover:bg-stone-200 transition-all shadow-lg focus:ring-4 focus:ring-white">
+                                Shop New Catalog (24+ Items)
+                            </a>
+                            <a href="#about" onclick="navigateTo('about'); return false;" class="px-8 py-4 bg-transparent border-2 border-white text-white font-extrabold text-sm rounded-xl hover:bg-white/10 transition-all focus:ring-4 focus:ring-white">
+                                Read Sustainability Story
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Value Proposition / Trust Bar -->
+            <div class="bg-aura-100 border-y border-aura-200 py-10">
+                <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white rounded-xl shadow-sm text-aura-900">
+                                <i data-lucide="truck" class="w-6 h-6" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-bold text-sm uppercase tracking-wide">Free Worldwide Delivery</h2>
+                                <p class="text-xs text-stone-600 mt-1">Complimentary carbon-neutral delivery on orders over $100.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white rounded-xl shadow-sm text-aura-900">
+                                <i data-lucide="shield-check" class="w-6 h-6" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-bold text-sm uppercase tracking-wide">30-Day Guarantee</h2>
+                                <p class="text-xs text-stone-600 mt-1">Hassle-free risk-free returns and size exchanges.</p>
+                            </div>
+                        </div>
+
+                        <div class="flex items-start gap-4">
+                            <div class="p-3 bg-white rounded-xl shadow-sm text-aura-900">
+                                <i data-lucide="leaf" class="w-6 h-6" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h2 class="font-bold text-sm uppercase tracking-wide">100% Ethical Sourcing</h2>
+                                <p class="text-xs text-stone-600 mt-1">GOTS organic cotton and certified recycled textiles.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Featured Categories Grid -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center max-w-xl mx-auto mb-12 space-y-2">
+                    <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Explore Collections</span>
+                    <h2 class="text-3xl font-extrabold text-aura-900">Curated Everyday Apparel</h2>
+                </div>
+
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                    <article class="group relative rounded-2xl overflow-hidden shadow-md bg-stone-900 h-96">
+                        <img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop" alt="Women's Apparel Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                            <span class="text-xs font-medium uppercase tracking-widest text-stone-300">Modern Tailoring</span>
+                            <h3 class="text-2xl font-bold">Women's Collection</h3>
+                            <a href="#shop" onclick="quickFilterGender('Women'); navigateTo('shop'); return false;" class="inline-flex items-center text-xs font-bold text-white underline hover:text-amber-300">
+                                Browse Women's Apparel <i data-lucide="arrow-right" class="w-4 h-4 ml-1" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="group relative rounded-2xl overflow-hidden shadow-md bg-stone-900 h-96">
+                        <img src="https://images.unsplash.com/photo-1617137984095-74e4e5e3613f?q=80&w=800&auto=format&fit=crop" alt="Men's Apparel Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                            <span class="text-xs font-medium uppercase tracking-widest text-stone-300">Essential Staples</span>
+                            <h3 class="text-2xl font-bold">Men's Collection</h3>
+                            <a href="#shop" onclick="quickFilterGender('Men'); navigateTo('shop'); return false;" class="inline-flex items-center text-xs font-bold text-white underline hover:text-amber-300">
+                                Browse Men's Apparel <i data-lucide="arrow-right" class="w-4 h-4 ml-1" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+
+                    <article class="group relative rounded-2xl overflow-hidden shadow-md bg-stone-900 h-96">
+                        <img src="https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=800&auto=format&fit=crop" alt="Accessories Collection" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500 opacity-80">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/90 via-black/30 to-transparent"></div>
+                        <div class="absolute bottom-6 left-6 right-6 text-white space-y-2">
+                            <span class="text-xs font-medium uppercase tracking-widest text-stone-300">Handcrafted Accessories</span>
+                            <h3 class="text-2xl font-bold">Accessories</h3>
+                            <a href="#shop" onclick="quickFilterCategory('Accessories'); navigateTo('shop'); return false;" class="inline-flex items-center text-xs font-bold text-white underline hover:text-amber-300">
+                                Browse Accessories <i data-lucide="arrow-right" class="w-4 h-4 ml-1" aria-hidden="true"></i>
+                            </a>
+                        </div>
+                    </article>
+                </div>
+            </div>
+
+            <!-- Home Bestsellers Section -->
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-8">
+                <div class="flex flex-col sm:flex-row sm:items-end justify-between mb-8 border-b border-aura-200 pb-4 gap-4">
+                    <div>
+                        <span class="text-xs font-bold uppercase tracking-widest text-stone-500">Bestselling Garments</span>
+                        <h2 class="text-2xl sm:text-3xl font-extrabold text-aura-900">Most Loved Styles</h2>
+                    </div>
+                    <a href="#shop" onclick="navigateTo('shop'); return false;" class="text-xs font-bold uppercase tracking-wider text-aura-900 hover:underline flex items-center gap-1">
+                        View All 24+ Items <i data-lucide="arrow-right" class="w-4 h-4" aria-hidden="true"></i>
+                    </a>
+                </div>
+
+                <div id="home-bestsellers-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <!-- Dynamically populated product cards -->
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 2: EXPANDED SHOP / CATALOG PAGE WITH MULTI-FACETED FILTERS -->
+        <section id="page-shop" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <div class="border-b border-aura-200 pb-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+                <div>
+                    <h1 class="text-3xl font-extrabold text-aura-900">Shop Catalog</h1>
+                    <p class="text-xs text-stone-600 mt-1" id="shop-results-count">Displaying catalog products</p>
+                </div>
+
+                <div class="flex items-center gap-3">
+                    <button onclick="resetAllFilters()" class="text-xs font-bold text-stone-600 hover:text-aura-900 underline px-2 py-1">
+                        Reset Filters
+                    </button>
+                    <!-- Sorting Filter -->
+                    <div class="w-48">
+                        <label for="shop-sort-select" class="sr-only">Sort Product List</label>
+                        <select id="shop-sort-select" onchange="applyFilters()" class="w-full bg-white border border-stone-300 text-xs font-semibold rounded-xl px-3 py-2.5 focus:ring-2 focus:ring-aura-900 cursor-pointer">
+                            <option value="featured">Sort: Featured</option>
+                            <option value="price-low">Price: Low to High</option>
+                            <option value="price-high">Price: High to Low</option>
+                            <option value="rating">Top Customer Rated</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-4 gap-8">
+                <!-- Sidebar Filters (Facet Controls) -->
+                <aside class="space-y-6 bg-white p-6 rounded-2xl border border-aura-200 h-fit shadow-sm" aria-label="Catalog Filters">
+                    <h2 class="text-sm font-extrabold uppercase tracking-wider text-aura-900 border-b border-aura-100 pb-3 flex items-center justify-between">
+                        <span>Filter Products</span>
+                        <i data-lucide="sliders-horizontal" class="w-4 h-4 text-stone-500" aria-hidden="true"></i>
+                    </h2>
+
+                    <!-- Search Input -->
+                    <div>
+                        <label for="shop-search" class="block text-xs font-bold text-aura-900 mb-1">Keyword Search</label>
+                        <div class="relative">
+                            <input type="text" id="shop-search" oninput="applyFilters()" placeholder="Search coat, silk, boots..." class="w-full bg-aura-50 border border-stone-300 rounded-xl px-3 py-2 pl-8 text-xs focus:ring-2 focus:ring-aura-900">
+                            <i data-lucide="search" class="w-3.5 h-3.5 text-stone-400 absolute left-2.5 top-2.5" aria-hidden="true"></i>
+                        </div>
+                    </div>
+
+                    <!-- Gender Filter -->
+                    <div>
+                        <label for="shop-gender-select" class="block text-xs font-bold text-aura-900 mb-1">Gender / Fit</label>
+                        <select id="shop-gender-select" onchange="applyFilters()" class="w-full bg-aura-50 border border-stone-300 text-xs font-medium rounded-xl px-3 py-2 focus:ring-2 focus:ring-aura-900 cursor-pointer">
+                            <option value="all">All Fits</option>
+                            <option value="Women">Women</option>
+                            <option value="Men">Men</option>
+                            <option value="Unisex">Unisex</option>
+                        </select>
+                    </div>
+
+                    <!-- Category Filter -->
+                    <div>
+                        <label for="shop-category-select" class="block text-xs font-bold text-aura-900 mb-1">Category</label>
+                        <select id="shop-category-select" onchange="applyFilters()" class="w-full bg-aura-50 border border-stone-300 text-xs font-medium rounded-xl px-3 py-2 focus:ring-2 focus:ring-aura-900 cursor-pointer">
+                            <option value="all">All Categories</option>
+                            <option value="Outerwear">Outerwear & Jackets</option>
+                            <option value="Tops">Tops & Knitwear</option>
+                            <option value="Denim & Trousers">Denim & Trousers</option>
+                            <option value="Dresses">Dresses & Skirts</option>
+                            <option value="Activewear">Activewear</option>
+                            <option value="Footwear">Footwear</option>
+                            <option value="Accessories">Accessories</option>
+                        </select>
+                    </div>
+
+                    <!-- Price Filter -->
+                    <div>
+                        <div class="flex justify-between items-center mb-1">
+                            <label for="price-range" class="text-xs font-bold text-aura-900">Max Price</label>
+                            <span id="price-limit-display" class="text-xs font-extrabold text-aura-900">$350</span>
+                        </div>
+                        <input type="range" id="price-range" min="40" max="350" step="10" value="350" oninput="applyFilters()" class="w-full accent-aura-900 cursor-pointer">
+                    </div>
+
+                    <!-- Size Selector Filter -->
+                    <div>
+                        <span class="block text-xs font-bold text-aura-900 mb-2">Available Size</span>
+                        <div class="flex flex-wrap gap-1.5" id="size-filter-group">
+                            <button type="button" onclick="toggleSizeFilter('XS', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">XS</button>
+                            <button type="button" onclick="toggleSizeFilter('S', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">S</button>
+                            <button type="button" onclick="toggleSizeFilter('M', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">M</button>
+                            <button type="button" onclick="toggleSizeFilter('L', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">L</button>
+                            <button type="button" onclick="toggleSizeFilter('XL', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">XL</button>
+                            <button type="button" onclick="toggleSizeFilter('XXL', this)" class="size-btn px-2.5 py-1 text-[11px] font-bold border border-stone-300 rounded-lg hover:bg-aura-100">XXL</button>
+                        </div>
+                    </div>
+
+                    <!-- Tag Badges Filter -->
+                    <div>
+                        <span class="block text-xs font-bold text-aura-900 mb-2">Special Collections</span>
+                        <div class="flex flex-wrap gap-1.5">
+                            <button type="button" onclick="toggleTagFilter('Bestseller', this)" class="tag-btn px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider border border-stone-300 rounded-full hover:bg-aura-100">Bestseller</button>
+                            <button type="button" onclick="toggleTagFilter('New', this)" class="tag-btn px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider border border-stone-300 rounded-full hover:bg-aura-100">New</button>
+                            <button type="button" onclick="toggleTagFilter('Sale', this)" class="tag-btn px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider border border-stone-300 rounded-full hover:bg-aura-100">Sale</button>
+                        </div>
+                    </div>
+                </aside>
+
+                <!-- Products Grid -->
+                <div class="lg:col-span-3">
+                    <div id="shop-products-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+                        <!-- Dynamically populated -->
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 3: PRODUCT DETAIL PAGE -->
+        <section id="page-product" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <button onclick="navigateTo('shop')" class="inline-flex items-center text-xs font-bold uppercase tracking-wider text-aura-900 mb-8 hover:underline">
+                <i data-lucide="arrow-left" class="w-4 h-4 mr-2" aria-hidden="true"></i> Back to Catalog
+            </button>
+
+            <div id="product-detail-container" class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <!-- Dynamically populated Product View -->
+            </div>
+        </section>
+
+        <!-- PAGE 4: CART PAGE -->
+        <section id="page-cart" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <h1 class="text-3xl font-extrabold text-aura-900 border-b border-aura-200 pb-4">Shopping Bag</h1>
+
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <!-- Cart Items List -->
+                <div class="lg:col-span-2 space-y-4" id="cart-page-items-list">
+                    <!-- Dynamic Cart Items -->
+                </div>
+
+                <!-- Order Breakdown Box -->
+                <div class="bg-white p-6 rounded-2xl border border-aura-200 h-fit space-y-6 shadow-sm">
+                    <h2 class="text-lg font-bold text-aura-900 border-b border-aura-100 pb-3">Order Summary</h2>
+
+                    <!-- Shipping Progress -->
+                    <div>
+                        <div class="flex justify-between text-xs font-semibold mb-1">
+                            <span>Free Carbon-Neutral Shipping</span>
+                            <span id="cart-shipping-remaining">$100.00 away</span>
+                        </div>
+                        <div class="w-full bg-aura-100 h-2 rounded-full overflow-hidden" role="progressbar" id="cart-shipping-bar-bg" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+                            <div id="cart-shipping-bar" class="bg-aura-900 h-full w-0 transition-all duration-300"></div>
+                        </div>
+                    </div>
+
+                    <!-- Promo Input -->
+                    <div class="flex gap-2">
+                        <label for="cart-promo-code" class="sr-only">Enter Promotional Code</label>
+                        <input type="text" id="cart-promo-code" placeholder="Promo code (WELCOME10)" class="px-3 py-2 text-xs bg-aura-50 border border-stone-300 rounded-xl flex-grow focus:ring-2 focus:ring-aura-900">
+                        <button onclick="applyCartPromo()" class="px-4 py-2 bg-aura-900 text-white font-bold text-xs rounded-xl hover:bg-stone-800">Apply</button>
+                    </div>
+
+                    <!-- Price Calculations -->
+                    <div class="space-y-3 text-sm border-t border-aura-100 pt-4">
+                        <div class="flex justify-between text-stone-600">
+                            <span>Subtotal</span>
+                            <span id="cart-subtotal-val">$0.00</span>
+                        </div>
+                        <div id="cart-discount-row" class="flex justify-between text-emerald-700 hidden">
+                            <span>Promo Discount (10%)</span>
+                            <span id="cart-discount-val">-$0.00</span>
+                        </div>
+                        <div class="flex justify-between text-stone-600">
+                            <span>Shipping</span>
+                            <span id="cart-shipping-val">Calculated at checkout</span>
+                        </div>
+                        <div class="flex justify-between text-base font-extrabold text-aura-900 pt-3 border-t border-aura-200">
+                            <span>Total</span>
+                            <span id="cart-total-val">$0.00</span>
+                        </div>
+                    </div>
+
+                    <a href="#checkout" onclick="navigateTo('checkout'); return false;" class="w-full py-4 bg-aura-900 text-white font-bold rounded-xl hover:bg-stone-800 transition-all text-center block shadow-md">
+                        Proceed to Accessible Checkout
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 5: CHECKOUT PAGE -->
+        <section id="page-checkout" class="page-view hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+            <h1 class="text-3xl font-extrabold text-aura-900 border-b border-aura-200 pb-4 mb-8">Secure Checkout</h1>
+
+            <form onsubmit="processCheckoutOrder(event)" class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+                <div class="lg:col-span-2 space-y-8">
+                    <!-- Step 1: Shipping Address -->
+                    <fieldset class="bg-white p-6 rounded-2xl border border-aura-200 space-y-4">
+                        <legend class="text-lg font-bold text-aura-900 flex items-center gap-2 border-b border-aura-100 pb-3 w-full">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-aura-900" aria-hidden="true"></i>
+                            1. Shipping Details
+                        </legend>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <div>
+                                <label for="chk-first-name" class="block text-xs font-bold text-stone-700 mb-1">First Name *</label>
+                                <input type="text" id="chk-first-name" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                            <div>
+                                <label for="chk-last-name" class="block text-xs font-bold text-stone-700 mb-1">Last Name *</label>
+                                <input type="text" id="chk-last-name" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                            <div class="sm:col-span-2">
+                                <label for="chk-street" class="block text-xs font-bold text-stone-700 mb-1">Street Address *</label>
+                                <input type="text" id="chk-street" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                            <div>
+                                <label for="chk-city" class="block text-xs font-bold text-stone-700 mb-1">City *</label>
+                                <input type="text" id="chk-city" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                            <div>
+                                <label for="chk-zip" class="block text-xs font-bold text-stone-700 mb-1">Postal Code *</label>
+                                <input type="text" id="chk-zip" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                        </div>
+                    </fieldset>
+
+                    <!-- Step 2: Payment -->
+                    <fieldset class="bg-white p-6 rounded-2xl border border-aura-200 space-y-4">
+                        <legend class="text-lg font-bold text-aura-900 flex items-center gap-2 border-b border-aura-100 pb-3 w-full">
+                            <i data-lucide="credit-card" class="w-5 h-5 text-aura-900" aria-hidden="true"></i>
+                            2. Payment Information
+                        </legend>
+                        <div class="space-y-3">
+                            <div>
+                                <label for="chk-card-num" class="block text-xs font-bold text-stone-700 mb-1">Credit Card Number *</label>
+                                <input type="text" id="chk-card-num" required aria-required="true" placeholder="4532 •••• •••• 8892" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                            </div>
+                            <div class="grid grid-cols-2 gap-4">
+                                <div>
+                                    <label for="chk-exp" class="block text-xs font-bold text-stone-700 mb-1">Expiry (MM/YY) *</label>
+                                    <input type="text" id="chk-exp" placeholder="12/28" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                                </div>
+                                <div>
+                                    <label for="chk-cvc" class="block text-xs font-bold text-stone-700 mb-1">Security Code (CVC) *</label>
+                                    <input type="text" id="chk-cvc" placeholder="382" required aria-required="true" class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                                </div>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div>
+
+                <!-- Checkout Summary Card -->
+                <div class="bg-aura-100 p-6 rounded-2xl border border-aura-200 h-fit space-y-4">
+                    <h2 class="text-lg font-bold text-aura-900 border-b border-aura-200 pb-3">Review Order</h2>
+                    <div id="checkout-items-summary" class="max-h-60 overflow-y-auto space-y-2 text-xs pr-1">
+                        <!-- Populated dynamically -->
+                    </div>
+                    <div class="border-t border-aura-200 pt-3 flex justify-between font-extrabold text-base text-aura-900">
+                        <span>Total Due</span>
+                        <span id="checkout-total-val">$0.00</span>
+                    </div>
+                    <button type="submit" class="w-full py-4 bg-aura-900 text-white font-extrabold text-sm rounded-xl hover:bg-stone-800 transition-all shadow-md">
+                        Place Order
+                    </button>
+                </div>
+            </form>
+        </section>
+
+        <!-- PAGE 6: WISHLIST PAGE -->
+        <section id="page-wishlist" class="page-view hidden max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 space-y-8">
+            <div class="border-b border-aura-200 pb-4">
+                <h1 class="text-3xl font-extrabold text-aura-900">Saved Wishlist</h1>
+                <p class="text-xs text-stone-600 mt-1">Review your saved modern wardrobe choices</p>
+            </div>
+
+            <div id="wishlist-page-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- Dynamically rendered -->
+            </div>
+        </section>
+
+        <!-- PAGE 7: ABOUT US & SUSTAINABILITY PAGE -->
+        <section id="page-about" class="page-view hidden max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-12">
+            <div class="text-center max-w-3xl mx-auto space-y-4">
+                <span class="text-xs font-bold uppercase tracking-[0.2em] text-stone-500">Our Ethos</span>
+                <h1 class="text-4xl font-extrabold text-aura-900">Designed for Life. Crafted with Ethics.</h1>
+                <p class="text-stone-600 text-base leading-relaxed">
+                    At AURA Atelier, we reject disposable fashion. Our mission is to produce timeless, accessible, high-performance garments using certified organic and recycled materials while maintaining 100% fair-wage artisan labor.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
+                <img src="https://images.unsplash.com/photo-1558769132-cb1aea458c5e?q=80&w=800&auto=format&fit=crop" alt="Organic textile production" class="rounded-2xl shadow-md w-full h-80 object-cover">
+                <div class="space-y-4">
+                    <h2 class="text-2xl font-bold text-aura-900">100% Traceable Supply Chain</h2>
+                    <p class="text-xs text-stone-600 leading-relaxed">
+                        Every sweater, coat, and accessory in our catalog is traced from seed to stitch. We collaborate exclusively with certified European and Asian ateliers operating on renewable solar power and zero-waste water recycling systems.
+                    </p>
+                </div>
+            </div>
+        </section>
+
+        <!-- PAGE 8: CONTACT PAGE -->
+        <section id="page-contact" class="page-view hidden max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-12 space-y-8">
+            <h1 class="text-3xl font-extrabold text-aura-900 border-b border-aura-200 pb-4">Contact Atelier Customer Support</h1>
+            <form onsubmit="handleContactSubmit(event)" class="bg-white p-8 rounded-2xl border border-aura-200 space-y-4 shadow-sm">
+                <div>
+                    <label for="contact-name" class="block text-xs font-bold text-stone-700 mb-1">Full Name *</label>
+                    <input type="text" id="contact-name" required class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                </div>
+                <div>
+                    <label for="contact-email" class="block text-xs font-bold text-stone-700 mb-1">Email Address *</label>
+                    <input type="email" id="contact-email" required class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900">
+                </div>
+                <div>
+                    <label for="contact-msg" class="block text-xs font-bold text-stone-700 mb-1">Message *</label>
+                    <textarea id="contact-msg" rows="4" required class="w-full px-3 py-2 text-xs border border-stone-300 rounded-xl focus:ring-2 focus:ring-aura-900"></textarea>
+                </div>
+                <button type="submit" class="w-full py-3 bg-aura-900 text-white font-bold text-xs rounded-xl hover:bg-stone-800">
+                    Send Message
+                </button>
+            </form>
+        </section>
+    </main>
+
+    <!-- Accessible Shopping Cart Drawer (WCAG Modal) -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 overflow-hidden hidden" role="dialog" aria-modal="true" aria-labelledby="cart-drawer-title">
+        <div class="fixed inset-0 bg-black/60 backdrop-blur-sm" onclick="toggleCartDrawer()"></div>
+        <div class="fixed inset-y-0 right-0 max-w-full flex pl-10">
+            <div class="w-screen max-w-md bg-white shadow-2xl flex flex-col">
+                <div class="p-6 bg-aura-50 border-b border-aura-200 flex items-center justify-between">
+                    <h2 id="cart-drawer-title" class="text-lg font-extrabold text-aura-900 flex items-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5" aria-hidden="true"></i> Shopping Bag
+                    </h2>
+                    <button onclick="toggleCartDrawer()" aria-label="Close Shopping Bag Drawer" class="p-2 text-stone-500 hover:text-black rounded-lg">
+                        <i data-lucide="x" class="w-5 h-5" aria-hidden="true"></i>
+                    </button>
+                </div>
+                <div id="cart-drawer-items-list" class="flex-1 overflow-y-auto p-6 space-y-4">
+                    <!-- Dynamic Drawer Items -->
+                </div>
+                <div class="p-6 border-t border-aura-200 bg-aura-50 space-y-4">
+                    <div class="flex justify-between text-base font-bold text-aura-900">
+                        <span>Subtotal</span>
+                        <span id="cart-drawer-subtotal-val">$0.00</span>
+                    </div>
+                    <a href="#cart" onclick="toggleCartDrawer(); navigateTo('cart'); return false;" class="w-full py-3.5 bg-aura-900 text-white font-bold text-xs rounded-xl hover:bg-stone-800 text-center block">
+                        View Full Bag & Checkout
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Confirmation Dialog Modal -->
+    <div id="order-confirm-modal" class="fixed inset-0 z-50 hidden bg-black/60 backdrop-blur-sm flex items-center justify-center p-4" role="dialog" aria-modal="true" aria-labelledby="modal-confirm-title">
+        <div class="bg-white rounded-3xl max-w-md w-full p-8 text-center space-y-4 shadow-2xl">
+            <div class="w-16 h-16 bg-emerald-100 text-emerald-700 rounded-full flex items-center justify-center mx-auto">
+                <i data-lucide="check" class="w-8 h-8" aria-hidden="true"></i>
+            </div>
+            <h2 id="modal-confirm-title" class="text-2xl font-bold text-aura-900">Order Successfully Placed!</h2>
+            <p class="text-xs text-stone-600">Thank you for supporting accessible sustainable fashion. Your confirmation receipt has been sent to your email address.</p>
+            <button onclick="closeConfirmModal()" class="w-full py-3.5 bg-aura-900 text-white font-bold text-xs rounded-xl">
+                Return to Store
+            </button>
+        </div>
+    </div>
+
+    <footer class="bg-aura-900 text-stone-300 mt-auto border-t border-stone-800" role="contentinfo">
+        <!-- Newsletter Signup Section -->
+        <div class="border-b border-stone-800 py-12 px-4 sm:px-6 lg:px-8">
+            <div class="max-w-xl mx-auto text-center space-y-4">
+                <h3 class="text-2xl font-bold text-white">Join the AURA Community</h3>
+                <p class="text-xs text-stone-400">Receive 10% off your first order plus early access to sustainable releases.</p>
+                <form onsubmit="handleNewsletterSubmit(event)" class="flex gap-2">
+                    <label for="newsletter-email" class="sr-only">Email address for newsletter subscription</label>
+                    <input type="email" id="newsletter-email" placeholder="Enter your email" required class="px-4 py-3 bg-stone-800 text-white placeholder-stone-500 rounded-xl flex-grow text-xs focus:ring-2 focus:ring-white">
+                    <button type="submit" class="px-6 py-3 bg-white text-aura-900 font-bold text-xs rounded-xl hover:bg-stone-200">
+                        Subscribe
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10 grid grid-cols-1 md:grid-cols-4 gap-8 text-xs">
+            <div class="space-y-2">
+                <span class="text-lg font-extrabold tracking-widest text-white">AURA ATELIER</span>
+                <p class="text-stone-400">WCAG 2.1 AA Compliant Sustainable Apparel.</p>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Shop Navigation</h4>
+                <ul class="space-y-2">
+                    <li><a href="#shop" onclick="navigateTo('shop'); return false;" class="hover:underline">Catalog</a></li>
+                    <li><a href="#wishlist" onclick="navigateTo('wishlist'); return false;" class="hover:underline">Saved Wishlist</a></li>
+                    <li><a href="#cart" onclick="navigateTo('cart'); return false;" class="hover:underline">Shopping Bag</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Company</h4>
+                <ul class="space-y-2">
+                    <li><a href="#about" onclick="navigateTo('about'); return false;" class="hover:underline">Sustainability Mission</a></li>
+                    <li><a href="#contact" onclick="navigateTo('contact'); return false;" class="hover:underline">Contact Support</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="font-bold text-white uppercase tracking-wider mb-3">Accessibility</h4>
+                <p class="text-stone-400">Designed with screen reader compatibility, keyboard navigation, and high-contrast color choices.</p>
+            </div>
+        </div>
+        <div class="text-center text-[10px] text-stone-500 py-4 border-t border-stone-800">
+            &copy; 2026 AURA Atelier. All rights reserved.
+        </div>
+    </footer>
+
+    <!-- JavaScript Data and Application Logic -->
+    <script>
+        // Expanded Product Catalog Database (24 Detailed Fashion Items)
+        const products = [
+            {
+                id: 1,
+                name: 'Minimalist Wool Trench Coat',
+                category: 'Outerwear',
+                subcategory: 'Coats',
+                gender: 'Women',
+                price: 245.00,
+                originalPrice: 280.00,
+                rating: 4.9,
+                reviewCount: 42,
+                image: 'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1544441893-675973e31985?q=80&w=800&auto=format&fit=crop',
+                    'https://images.unsplash.com/photo-1539109136881-3be0616acf4b?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Tailored double-breasted trench coat crafted from 100% sustainable virgin wool with structured shoulders and horn buttons.',
+                features: ['100% Certified Organic Wool', 'Fully silk-lined interior', 'Side welt pockets', 'Water-repellent finish'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                colors: ['Camel', 'Charcoal', 'Black'],
+                tags: ['Bestseller', 'Sustainable']
+            },
+            {
+                id: 2,
+                name: 'Oversized Ribbed Knit Jumper',
+                category: 'Tops',
+                subcategory: 'Sweaters',
+                gender: 'Women',
+                price: 110.00,
+                originalPrice: 130.00,
+                rating: 4.8,
+                reviewCount: 38,
+                image: 'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1434389677669-e08b4cac3105?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Breathable heavyweight ribbed knit sweater made with ethically harvested organic cotton and soft merino wool.',
+                features: ['70% Organic Cotton, 30% Merino Wool', 'Drop shoulder fit', 'Ribbed cuffs and hem'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                colors: ['Oatmeal', 'Sage', 'Cream'],
+                tags: ['Bestseller', 'Sustainable']
+            },
+            {
+                id: 3,
+                name: 'Structured Linen Button-Down',
+                category: 'Tops',
+                subcategory: 'Shirts',
+                gender: 'Men',
+                price: 85.00,
+                originalPrice: 95.00,
+                rating: 4.7,
+                reviewCount: 29,
+                image: 'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1598033129183-c4f50c736f10?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Relaxed-fit classic collar shirt crafted from premium French flax linen for breathable tropical comfort.',
+                features: ['100% French Flax Linen', 'Mother-of-pearl buttons', 'Pre-washed for soft feel'],
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['White', 'Navy', 'Olive'],
+                tags: ['New']
+            },
+            {
+                id: 4,
+                name: 'Tailored Wide-Leg Trousers',
+                category: 'Denim & Trousers',
+                subcategory: 'Pants',
+                gender: 'Women',
+                price: 135.00,
+                originalPrice: 150.00,
+                rating: 4.9,
+                reviewCount: 51,
+                image: 'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1509631179647-0177331693ae?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'High-waisted pleated trousers featuring a fluid wide-leg silhouette and concealed front hook closure.',
+                features: ['Recycled Polyester & Tencel blend', 'High rise', 'Side pockets'],
+                sizes: ['XS', 'S', 'M', 'L'],
+                colors: ['Ecru', 'Black', 'Taupe'],
+                tags: ['Bestseller']
+            },
+            {
+                id: 5,
+                name: 'Handcrafted Leather Tote Bag',
+                category: 'Accessories',
+                subcategory: 'Bags',
+                gender: 'Unisex',
+                price: 180.00,
+                originalPrice: 210.00,
+                rating: 5.0,
+                reviewCount: 64,
+                image: 'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1523206489230-c012c64b2b48?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Full-grain vegetable-tanned leather tote bag with internal laptop sleeve and brass zip closures.',
+                features: ['Vegetable-tanned leather', '15-inch laptop compartment', 'Solid brass hardware'],
+                sizes: ['One Size'],
+                colors: ['Cognac', 'Black'],
+                tags: ['Bestseller']
+            },
+            {
+                id: 6,
+                name: 'Utility Organic Denim Jacket',
+                category: 'Outerwear',
+                subcategory: 'Jackets',
+                gender: 'Unisex',
+                price: 160.00,
+                originalPrice: 180.00,
+                rating: 4.6,
+                reviewCount: 22,
+                image: 'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1576995853123-5a10305d93c0?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Heavyweight organic denim worker jacket featuring dual utility chest pockets and reinforced copper rivets.',
+                features: ['14oz Organic Cotton Denim', 'Unwashed indigo finish', 'Custom metal buttons'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Raw Indigo', 'Washed Black'],
+                tags: ['Sustainable']
+            },
+            {
+                id: 7,
+                name: 'Mulberry Silk Slip Midi Dress',
+                category: 'Dresses',
+                subcategory: 'Slip Dresses',
+                gender: 'Women',
+                price: 195.00,
+                originalPrice: 220.00,
+                rating: 4.9,
+                reviewCount: 47,
+                image: 'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1515886657613-9f3515b0c78f?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Fluid 19mm Mulberry silk dress cut on the bias with delicate adjustable spaghetti straps and scoop neckline.',
+                features: ['100% Grade 6A Mulberry Silk', 'Bias cut for natural drape', 'Adjustable straps'],
+                sizes: ['XS', 'S', 'M', 'L'],
+                colors: ['Champagne', 'Midnight Black', 'Emerald'],
+                tags: ['Bestseller', 'Sale']
+            },
+            {
+                id: 8,
+                name: 'Slim Stretch Organic Chino Pants',
+                category: 'Denim & Trousers',
+                subcategory: 'Pants',
+                gender: 'Men',
+                price: 95.00,
+                originalPrice: 110.00,
+                rating: 4.7,
+                reviewCount: 33,
+                image: 'https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1479064555552-3ef4979f8908?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Tailored stretch chinos made with organic twill cotton and elastane for maximum daily mobility.',
+                features: ['98% Organic Cotton, 2% Elastane', 'YKK zip fly', 'Welt rear pockets'],
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Khaki', 'Navy', 'Olive'],
+                tags: ['Sale']
+            },
+            {
+                id: 9,
+                name: 'Handcrafted Chelsea Leather Boots',
+                category: 'Footwear',
+                subcategory: 'Boots',
+                gender: 'Unisex',
+                price: 210.00,
+                originalPrice: 240.00,
+                rating: 4.8,
+                reviewCount: 19,
+                image: 'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1542291026-7eec264c27ff?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Classic leather Chelsea boots with elastic side gores and Goodyear-welted rubber lug soles.',
+                features: ['Italian calfskin leather', 'Goodyear welted', 'Cushioned ergonomic footbed'],
+                sizes: ['S', 'M', 'L', 'XL'],
+                colors: ['Black', 'Dark Brown'],
+                tags: ['New']
+            },
+            {
+                id: 10,
+                name: 'Cashmere Beanie & Scarf Set',
+                category: 'Accessories',
+                subcategory: 'Knitwear Accs',
+                gender: 'Unisex',
+                price: 120.00,
+                originalPrice: 140.00,
+                rating: 4.9,
+                reviewCount: 28,
+                image: 'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1520903920243-00d872a2d1c9?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Ultra-soft 100% Mongolian cashmere ribbed beanie and matching fringe scarf winter set.',
+                features: ['100% Pure Mongolian Cashmere', 'Rib-knit stretch structure', 'Gift boxed'],
+                sizes: ['One Size'],
+                colors: ['Camel', 'Grey Melange', 'Black'],
+                tags: ['New']
+            },
+            {
+                id: 11,
+                name: 'Relaxed Fit Heavyweight Hoodie',
+                category: 'Tops',
+                subcategory: 'Hoodies',
+                gender: 'Unisex',
+                price: 98.00,
+                originalPrice: 115.00,
+                rating: 4.8,
+                reviewCount: 56,
+                image: 'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1556905055-8f358a7a47b2?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: '450gsm combed organic cotton fleece hoodie with double-lined hood and seamless pouch pocket.',
+                features: ['450gsm Organic French Terry', 'Pre-shrunk fabric', 'Ribbed cuffs'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Sand', 'Washed Olive', 'Black'],
+                tags: ['Bestseller']
+            },
+            {
+                id: 12,
+                name: 'Pleated A-Line Midi Skirt',
+                category: 'Dresses',
+                subcategory: 'Skirts',
+                gender: 'Women',
+                price: 115.00,
+                originalPrice: 130.00,
+                rating: 4.6,
+                reviewCount: 18,
+                image: 'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Accordion pleated midi skirt with structured elastic waistband and elegant movement.',
+                features: ['Recycled Satin Polyester', 'Concealed side zip', 'Midi length'],
+                sizes: ['XS', 'S', 'M', 'L'],
+                colors: ['Bronze', 'Navy', 'Cream'],
+                tags: ['New']
+            },
+            {
+                id: 13,
+                name: 'Straight Leg Vintage Denim Jeans',
+                category: 'Denim & Trousers',
+                subcategory: 'Jeans',
+                gender: 'Women',
+                price: 128.00,
+                originalPrice: 145.00,
+                rating: 4.9,
+                reviewCount: 63,
+                image: 'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1541099649105-f69ad21f3246?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'High-rise 90s inspired straight leg jeans made with 100% rigid organic cotton denim.',
+                features: ['100% Rigid Organic Denim', 'Button fly', 'Classic 5-pocket styling'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                colors: ['Light Vintage Wash', 'Medium Wash'],
+                tags: ['Bestseller', 'Sustainable']
+            },
+            {
+                id: 14,
+                name: 'Waterproof Technical Mac Jacket',
+                category: 'Outerwear',
+                subcategory: 'Coats',
+                gender: 'Men',
+                price: 220.00,
+                originalPrice: 250.00,
+                rating: 4.7,
+                reviewCount: 15,
+                image: 'https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1516257984-b1b4d707412e?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Sleek raincoat coat crafted with 3-layer breathable recycled membrane and taped seams.',
+                features: ['3-Layer Recycled Shell', '10,000mm Waterproof rating', 'Magnetic storm flap'],
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Black', 'Navy', 'Stone'],
+                tags: ['New']
+            },
+            {
+                id: 15,
+                name: 'Merino Wool Polo Shirt',
+                category: 'Tops',
+                subcategory: 'Polos',
+                gender: 'Men',
+                price: 105.00,
+                originalPrice: 120.00,
+                rating: 4.8,
+                reviewCount: 24,
+                image: 'https://images.unsplash.com/photo-1625910513413-2131971f114c?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1625910513413-2131971f114c?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Fine-gauge extra-fine Merino wool knitted polo shirt with open collar styling.',
+                features: ['100% Extra-fine Merino Wool', 'Odour resistant', 'Ribbed hem'],
+                sizes: ['S', 'M', 'L', 'XL'],
+                colors: ['Charcoal', 'Forest Green', 'Burgundy'],
+                tags: ['Sustainable']
+            },
+            {
+                id: 16,
+                name: 'Recycled Active Seamless Leggings',
+                category: 'Activewear',
+                subcategory: 'Bottoms',
+                gender: 'Women',
+                price: 78.00,
+                originalPrice: 90.00,
+                rating: 4.9,
+                reviewCount: 71,
+                image: 'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1506629082955-511b1aa562c8?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'High-performance moisture-wicking leggings engineered from 80% recycled nylon.',
+                features: ['Squat-proof compression', 'Hidden waistband key pocket', '4-way stretch'],
+                sizes: ['XS', 'S', 'M', 'L'],
+                colors: ['Black', 'Plum', 'Sage'],
+                tags: ['Bestseller', 'Sustainable']
+            },
+            {
+                id: 17,
+                name: 'Minimalist Leather Low Trainers',
+                category: 'Footwear',
+                subcategory: 'Sneakers',
+                gender: 'Unisex',
+                price: 155.00,
+                originalPrice: 175.00,
+                rating: 4.8,
+                reviewCount: 39,
+                image: 'https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1560769629-975ec94e6a86?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Clean white leather sneakers with recycled rubber cupsole and waxed organic cotton laces.',
+                features: ['Full-grain Italian leather', 'Recycled rubber sole', 'Organic cotton laces'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL'],
+                colors: ['White/Off-White', 'White/Black'],
+                tags: ['New']
+            },
+            {
+                id: 18,
+                name: 'Structured Puffer Vest',
+                category: 'Outerwear',
+                subcategory: 'Vests',
+                gender: 'Unisex',
+                price: 140.00,
+                originalPrice: 165.00,
+                rating: 4.7,
+                reviewCount: 20,
+                image: 'https://images.unsplash.com/photo-1520975954732-35dd22299614?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1520975954732-35dd22299614?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Insulated puffer vest stuffed with 100% recycled down-alternative insulation.',
+                features: ['Recycled nylon ripstop', '100% Recycled polyfill', 'Fleece-lined hand pockets'],
+                sizes: ['S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Matte Black', 'Olive Drab'],
+                tags: ['Sale']
+            },
+            {
+                id: 19,
+                name: 'Silk Blend Slip Skirt',
+                category: 'Dresses',
+                subcategory: 'Skirts',
+                gender: 'Women',
+                price: 110.00,
+                originalPrice: 125.00,
+                rating: 4.6,
+                reviewCount: 14,
+                image: 'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1572804013309-59a88b7e92f1?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Midi bias-cut skirt crafted with silk and viscose for subtle sheen and fluidity.',
+                features: ['Silk & Viscose blend', 'Elasticated hidden waist', 'Midi length'],
+                sizes: ['XS', 'S', 'M', 'L'],
+                colors: ['Champagne', 'Black'],
+                tags: ['Sale']
+            },
+            {
+                id: 20,
+                name: 'Polar Fleece Zip Pullover',
+                category: 'Tops',
+                subcategory: 'Fleece',
+                gender: 'Unisex',
+                price: 88.00,
+                originalPrice: 100.00,
+                rating: 4.8,
+                reviewCount: 31,
+                image: 'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1578587018452-892bacefd3f2?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Plush half-zip jacket made from 100% recycled plastic bottle polar fleece.',
+                features: ['100% Recycled Polar Fleece', 'YKK metal half zip', 'Elastic binding at cuffs'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['Cream/Navy', 'Forest/Black'],
+                tags: ['Sustainable']
+            },
+            {
+                id: 21,
+                name: 'Tailored Linen Shorts',
+                category: 'Denim & Trousers',
+                subcategory: 'Shorts',
+                gender: 'Men',
+                price: 75.00,
+                originalPrice: 85.00,
+                rating: 4.5,
+                reviewCount: 12,
+                image: 'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1591195853828-11db59a44f6b?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: '7-inch inseam relaxed tailored shorts crafted from light linen cotton blend.',
+                features: ['55% Linen, 45% Organic Cotton', 'Drawstring waist', 'Side seam pockets'],
+                sizes: ['S', 'M', 'L', 'XL'],
+                colors: ['Sand', 'Olive', 'Navy'],
+                tags: ['Sale']
+            },
+            {
+                id: 22,
+                name: 'Polarized Acetate Sunglasses',
+                category: 'Accessories',
+                subcategory: 'Eyewear',
+                gender: 'Unisex',
+                price: 130.00,
+                originalPrice: 150.00,
+                rating: 4.9,
+                reviewCount: 27,
+                image: 'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1511499767150-a48a237f0083?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Handcrafted bio-acetate square frames featuring 100% UV400 polarized Zeiss lenses.',
+                features: ['Italian Bio-Acetate frame', 'Zeiss Polarized Lenses', 'Includes leather case'],
+                sizes: ['One Size'],
+                colors: ['Tortoise', 'Solid Black'],
+                tags: ['New']
+            },
+            {
+                id: 23,
+                name: 'Organic Crewneck T-Shirt 3-Pack',
+                category: 'Tops',
+                subcategory: 'T-Shirts',
+                gender: 'Unisex',
+                price: 72.00,
+                originalPrice: 85.00,
+                rating: 4.9,
+                reviewCount: 88,
+                image: 'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1521572267360-ee0c2909d518?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Essential 180gsm combed organic cotton jersey crewneck t-shirts in a value bundle.',
+                features: ['100% GOTS Organic Cotton', 'Reinforced collar', 'Tagless comfort label'],
+                sizes: ['XS', 'S', 'M', 'L', 'XL', 'XXL'],
+                colors: ['White/Grey/Black'],
+                tags: ['Bestseller', 'Sustainable']
+            },
+            {
+                id: 24,
+                name: 'Woven Leather Belt',
+                category: 'Accessories',
+                subcategory: 'Belts',
+                gender: 'Unisex',
+                price: 65.00,
+                originalPrice: 75.00,
+                rating: 4.7,
+                reviewCount: 16,
+                image: 'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop',
+                galleryImages: [
+                    'https://images.unsplash.com/photo-1624222247344-550fb60583dc?q=80&w=800&auto=format&fit=crop'
+                ],
+                desc: 'Hand-woven full-grain leather stretch belt with solid brushed brass buckle.',
+                features: ['Full-grain Italian leather', 'Brushed brass buckle', 'Pin-anywhere braid'],
+                sizes: ['S', 'M', 'L', 'XL'],
+                colors: ['Dark Brown', 'Black'],
+                tags: ['Sale']
+            }
+        ];
+
+        // State Storage
+        let cart = JSON.parse(localStorage.getItem('aura_cart')) || [];
+        let wishlist = JSON.parse(localStorage.getItem('aura_wishlist')) || [];
+        let isHighContrast = false;
+        let isPromoApplied = false;
+
+        // Active Filter States
+        let activeFilters = {
+            gender: 'all',
+            category: 'all',
+            maxPrice: 350,
+            size: null,
+            tag: null,
+            search: '',
+            sort: 'featured'
+        };
+
+        document.addEventListener('DOMContentLoaded', () => {
+            lucide.createIcons();
+            renderHomeBestsellers();
+            renderShopCatalog(products);
+            updateCartState();
+            updateWishlistState();
+            
+            // Handle Direct Fragment Hash Navigation
+            const hash = window.location.hash.replace('#', '') || 'home';
+            navigateTo(hash, false);
+        });
+
+        // ARIA Screen Reader Live Announcer
+        function announceToScreenReader(message) {
+            const announcer = document.getElementById('sr-announcer');
+            announcer.textContent = message;
+        }
+
+        // SPA Navigation Manager
+        function navigateTo(pageId, updateHash = true) {
+            document.querySelectorAll('.page-view').forEach(p => p.classList.add('hidden'));
+            const targetPage = document.getElementById(`page-${pageId}`) || document.getElementById('page-home');
+            targetPage.classList.remove('hidden');
+
+            if (updateHash) {
+                history.pushState(null, null, `#${pageId}`);
+            }
+
+            // Update Nav Active State
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                if (btn.dataset.page === pageId) {
+                    btn.classList.add('font-extrabold', 'border-b-2', 'border-aura-900');
+                    btn.setAttribute('aria-current', 'page');
+                } else {
+                    btn.classList.remove('font-extrabold', 'border-b-2', 'border-aura-900');
+                    btn.removeAttribute('aria-current');
+                }
+            });
+
+            // Focus Management for Accessibility (WCAG 2.4.3)
+            document.getElementById('main-content').focus();
+
+            if (pageId === 'cart') renderFullCartPage();
+            if (pageId === 'wishlist') renderWishlistPage();
+            if (pageId === 'checkout') renderCheckoutSummary();
+        }
+
+        // High Contrast Theme Toggle
+        function toggleHighContrast() {
+            isHighContrast = !isHighContrast;
+            document.body.classList.toggle('high-contrast', isHighContrast);
+            document.getElementById('hc-toggle-btn').textContent = `High Contrast: ${isHighContrast ? 'On' : 'Off'}`;
+            announceToScreenReader(`High contrast mode ${isHighContrast ? 'enabled' : 'disabled'}`);
+        }
+
+        function toggleMobileMenu() {
+            const drawer = document.getElementById('mobile-nav-drawer');
+            const btn = document.getElementById('mobile-menu-btn');
+            const isExpanded = btn.getAttribute('aria-expanded') === 'true';
+            
+            drawer.classList.toggle('hidden');
+            btn.setAttribute('aria-expanded', !isExpanded);
+        }
+
+        // Product Card Generator with Full ARIA markup
+        function createProductCardHTML(product) {
+            const isWishlisted = wishlist.includes(product.id);
+            const primaryTag = product.tags && product.tags.length ? product.tags[0] : null;
+
+            return `
+                <article class="bg-white rounded-2xl overflow-hidden shadow-sm hover:shadow-md border border-aura-200 transition-all flex flex-col group">
+                    <div class="relative aspect-[4/5] bg-stone-100 overflow-hidden">
+                        <img src="${product.image}" alt="${product.name}" class="w-full h-full object-cover cursor-pointer group-hover:scale-105 transition-transform duration-500" onclick="openProductDetail(${product.id})">
+                        
+                        ${primaryTag ? `
+                            <span class="absolute top-3 left-3 bg-aura-900/90 backdrop-blur-md text-white text-[10px] font-extrabold uppercase tracking-widest px-2.5 py-1 rounded-md">
+                                ${primaryTag}
+                            </span>
+                        ` : ''}
+
+                        <button onclick="toggleWishlist(${product.id})" aria-label="${isWishlisted ? 'Remove ' + product.name + ' from wishlist' : 'Add ' + product.name + ' to wishlist'}" class="absolute top-3 right-3 p-2.5 bg-white/90 rounded-full text-aura-900 hover:text-red-600 focus:ring-2 focus:ring-aura-900 shadow-sm">
+                            <i data-lucide="heart" class="w-4 h-4 ${isWishlisted ? 'fill-red-600 text-red-600' : ''}" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                    <div class="p-5 flex flex-col flex-grow justify-between space-y-3">
+                        <div>
+                            <div class="flex items-center justify-between text-[10px] font-bold text-stone-500 uppercase tracking-widest">
+                                <span>${product.category}</span>
+                                <span>${product.gender} Fit</span>
+                            </div>
+                            <h3 class="font-bold text-sm text-aura-900 mt-1 cursor-pointer hover:underline" onclick="openProductDetail(${product.id})">${product.name}</h3>
+                        </div>
+                        <div class="flex items-center justify-between pt-3 border-t border-aura-100">
+                            <div class="flex items-baseline gap-1.5">
+                                <span class="font-extrabold text-sm text-aura-900">$${product.price.toFixed(2)}</span>
+                                ${product.originalPrice ? `<span class="text-xs text-stone-400 line-through">$${product.originalPrice.toFixed(2)}</span>` : ''}
+                            </div>
+                            <button onclick="addToCart(${product.id})" aria-label="Add ${product.name} to shopping bag" class="px-3 py-2 bg-aura-900 text-white rounded-xl text-xs font-bold hover:bg-stone-800 flex items-center gap-1 transition-colors">
+                                <i data-lucide="shopping-bag" class="w-3.5 h-3.5" aria-hidden="true"></i> Add
+                            </button>
+                        </div>
+                    </div>
+                </article>
+            `;
+        }
+
+        function renderHomeBestsellers() {
+            const container = document.getElementById('home-bestsellers-grid');
+            const items = products.filter(p => p.tags.includes('Bestseller')).slice(0, 4);
+            container.innerHTML = items.map(p => createProductCardHTML(p)).join('');
+            lucide.createIcons();
+        }
+
+        function renderShopCatalog(items) {
+            const container = document.getElementById('shop-products-grid');
+            document.getElementById('shop-results-count').textContent = `Displaying ${items.length} of ${products.length} product(s)`;
+            
+            if (items.length === 0) {
+                container.innerHTML = `
+                    <div class="col-span-full py-16 text-center space-y-3 bg-white rounded-2xl border border-aura-200">
+                        <i data-lucide="package-search" class="w-10 h-10 text-stone-400 mx-auto" aria-hidden="true"></i>
+                        <h3 class="text-base font-bold text-aura-900">No garments match your filters</h3>
+                        <p class="text-xs text-stone-500">Try adjusting your price range, clearing size selections, or resetting search.</p>
+                        <button onclick="resetAllFilters()" class="mt-2 px-4 py-2 bg-aura-900 text-white font-bold text-xs rounded-xl">
+                            Reset All Filters
+                        </button>
+                    </div>
+                `;
+            } else {
+                container.innerHTML = items.map(p => createProductCardHTML(p)).join('');
+            }
+            lucide.createIcons();
+        }
+
+        function applyFilters() {
+            activeFilters.search = document.getElementById('shop-search').value.toLowerCase().trim();
+            activeFilters.gender = document.getElementById('shop-gender-select').value;
+            activeFilters.category = document.getElementById('shop-category-select').value;
+            activeFilters.maxPrice = parseFloat(document.getElementById('price-range').value);
+            activeFilters.sort = document.getElementById('shop-sort-select').value;
+
+            document.getElementById('price-limit-display').textContent = `$${activeFilters.maxPrice}`;
+
+            let filtered = products.filter(p => {
+                const matchesSearch = !activeFilters.search || 
+                    p.name.toLowerCase().includes(activeFilters.search) || 
+                    p.desc.toLowerCase().includes(activeFilters.search) ||
+                    p.category.toLowerCase().includes(activeFilters.search);
+
+                const matchesGender = (activeFilters.gender === 'all') || (p.gender === activeFilters.gender) || (p.gender === 'Unisex');
+                const matchesCategory = (activeFilters.category === 'all') || (p.category === activeFilters.category);
+                const matchesPrice = p.price <= activeFilters.maxPrice;
+                const matchesSize = !activeFilters.size || p.sizes.includes(activeFilters.size);
+                const matchesTag = !activeFilters.tag || p.tags.includes(activeFilters.tag);
+
+                return matchesSearch && matchesGender && matchesCategory && matchesPrice && matchesSize && matchesTag;
+            });
+
+            if (activeFilters.sort === 'price-low') filtered.sort((a,b) => a.price - b.price);
+            if (activeFilters.sort === 'price-high') filtered.sort((a,b) => b.price - a.price);
+            if (activeFilters.sort === 'rating') filtered.sort((a,b) => b.rating - a.rating);
+
+            renderShopCatalog(filtered);
+        }
+
+        function toggleSizeFilter(size, buttonEl) {
+            if (activeFilters.size === size) {
+                activeFilters.size = null;
+            } else {
+                activeFilters.size = size;
+            }
+
+            document.querySelectorAll('.size-btn').forEach(b => {
+                b.classList.remove('bg-aura-900', 'text-white');
+                b.classList.add('border-stone-300');
+            });
+
+            if (activeFilters.size) {
+                buttonEl.classList.add('bg-aura-900', 'text-white');
+            }
+
+            applyFilters();
+        }
+
+        function toggleTagFilter(tag, buttonEl) {
+            if (activeFilters.tag === tag) {
+                activeFilters.tag = null;
+            } else {
+                activeFilters.tag = tag;
+            }
+
+            document.querySelectorAll('.tag-btn').forEach(b => {
+                b.classList.remove('bg-aura-900', 'text-white');
+            });
+
+            if (activeFilters.tag) {
+                buttonEl.classList.add('bg-aura-900', 'text-white');
+            }
+
+            applyFilters();
+        }
+
+        function resetAllFilters() {
+            activeFilters = {
+                gender: 'all',
+                category: 'all',
+                maxPrice: 350,
+                size: null,
+                tag: null,
+                search: '',
+                sort: 'featured'
+            };
+
+            document.getElementById('shop-search').value = '';
+            document.getElementById('shop-gender-select').value = 'all';
+            document.getElementById('shop-category-select').value = 'all';
+            document.getElementById('price-range').value = 350;
+            document.getElementById('price-limit-display').textContent = '$350';
+            document.getElementById('shop-sort-select').value = 'featured';
+
+            document.querySelectorAll('.size-btn').forEach(b => b.classList.remove('bg-aura-900', 'text-white'));
+            document.querySelectorAll('.tag-btn').forEach(b => b.classList.remove('bg-aura-900', 'text-white'));
+
+            applyFilters();
+            announceToScreenReader('All filters have been reset');
+        }
+
+        function quickFilterGender(gender) {
+            resetAllFilters();
+            document.getElementById('shop-gender-select').value = gender;
+            applyFilters();
+        }
+
+        function quickFilterCategory(cat) {
+            resetAllFilters();
+            document.getElementById('shop-category-select').value = cat;
+            applyFilters();
+        }
+
+        // Product Detail View
+        function openProductDetail(productId) {
+            const p = products.find(prod => prod.id === productId);
+            if (!p) return;
+
+            const container = document.getElementById('product-detail-container');
+            container.innerHTML = `
+                <div class="space-y-4">
+                    <div class="aspect-[4/5] bg-stone-100 rounded-2xl overflow-hidden border border-aura-200">
+                        <img id="p-main-img" src="${p.image}" alt="${p.name}" class="w-full h-full object-cover">
+                    </div>
+                </div>
+                <div class="space-y-6">
+                    <div>
+                        <div class="flex items-center gap-2 text-xs font-bold uppercase tracking-widest text-stone-500">
+                            <span>${p.category}</span> • <span>${p.gender} Fit</span>
+                        </div>
+                        <h1 class="text-3xl font-extrabold text-aura-900 mt-1">${p.name}</h1>
+                        <div class="flex items-center gap-3 mt-3">
+                            <span class="text-2xl font-extrabold text-aura-900">$${p.price.toFixed(2)}</span>
+                            ${p.originalPrice ? `<span class="text-base text-stone-400 line-through">$${p.originalPrice.toFixed(2)}</span>` : ''}
+                            <div class="flex items-center gap-1 bg-amber-50 border border-amber-200 text-amber-800 px-2 py-0.5 rounded-lg text-xs font-bold ml-auto">
+                                <i data-lucide="star" class="w-3.5 h-3.5 fill-amber-500 text-amber-500" aria-hidden="true"></i>
+                                <span>${p.rating} (${p.reviewCount} reviews)</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <p class="text-xs text-stone-600 leading-relaxed border-t border-b border-aura-100 py-4">${p.desc}</p>
+
+                    <div>
+                        <h3 class="text-xs font-bold text-aura-900 mb-2 uppercase tracking-wider">Key Design Features</h3>
+                        <ul class="list-disc list-inside text-xs text-stone-600 space-y-1">
+                            ${p.features.map(f => `<li>${f}</li>`).join('')}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <label id="size-label" class="block text-xs font-bold text-aura-900 mb-2">Select Garment Size</label>
+                        <div role="radiogroup" aria-labelledby="size-label" class="flex flex-wrap gap-2">
+                            ${p.sizes.map((s, i) => `
+                                <button type="button" class="px-4 py-2 border ${i === 0 ? 'border-2 border-aura-900 bg-aura-900 text-white' : 'border-stone-300'} rounded-xl text-xs font-bold hover:border-aura-900">${s}</button>
+                            `).join('')}
+                        </div>
+                    </div>
+
+                    <div class="flex gap-4 pt-4">
+                        <button onclick="addToCart(${p.id})" class="flex-1 py-4 bg-aura-900 text-white font-extrabold text-xs rounded-xl hover:bg-stone-800 shadow-md">
+                            Add to Shopping Bag
+                        </button>
+                        <button onclick="toggleWishlist(${p.id})" aria-label="Save to Wishlist" class="p-4 border border-stone-300 rounded-xl hover:bg-aura-100">
+                            <i data-lucide="heart" class="w-5 h-5 text-aura-900" aria-hidden="true"></i>
+                        </button>
+                    </div>
+                </div>
+            `;
+
+            lucide.createIcons();
+            navigateTo('product');
+        }
+
+        function addToCart(id) {
+            const p = products.find(item => item.id === id);
+            const index = cart.findIndex(item => item.id === id);
+
+            if (index > -1) {
+                cart[index].qty += 1;
+            } else {
+                cart.push({ ...p, qty: 1 });
+            }
+
+            saveState();
+            updateCartState();
+            announceToScreenReader(`${p.name} added to your shopping bag.`);
+        }
+
+        function updateCartQty(index, delta) {
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                announceToScreenReader(`${cart[index].name} removed from bag.`);
+                cart.splice(index, 1);
+            }
+            saveState();
+            updateCartState();
+            renderFullCartPage();
+        }
+
+        function updateCartState() {
+            const totalQty = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            const badge = document.getElementById('cart-badge');
+            badge.textContent = totalQty;
+            badge.classList.toggle('opacity-0', totalQty === 0);
+
+            // Drawer Items
+            const drawerList = document.getElementById('cart-drawer-items-list');
+            if (cart.length === 0) {
+                drawerList.innerHTML = `<p class="text-xs text-stone-500 text-center py-8">Your bag is empty.</p>`;
+            } else {
+                drawerList.innerHTML = cart.map((item, idx) => `
+                    <div class="flex gap-3 items-center border-b border-aura-100 pb-3">
+                        <img src="${item.image}" alt="${item.name}" class="w-14 h-16 object-cover rounded-lg">
+                        <div class="flex-1">
+                            <h4 class="font-bold text-xs text-aura-900">${item.name}</h4>
+                            <span class="text-xs font-bold text-aura-900">$${item.price.toFixed(2)}</span>
+                            <div class="flex items-center gap-2 mt-1">
+                                <button onclick="updateCartQty(${idx}, -1)" aria-label="Decrease quantity" class="w-5 h-5 border border-stone-300 rounded font-bold text-xs">-</button>
+                                <span class="text-xs font-semibold">${item.qty}</span>
+                                <button onclick="updateCartQty(${idx}, 1)" aria-label="Increase quantity" class="w-5 h-5 border border-stone-300 rounded font-bold text-xs">+</button>
+                            </div>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            document.getElementById('cart-drawer-subtotal-val').textContent = `$${subtotal.toFixed(2)}`;
+            lucide.createIcons();
+        }
+
+        function toggleCartDrawer() {
+            const drawer = document.getElementById('cart-drawer');
+            const toggleBtn = document.getElementById('cart-drawer-toggle');
+            const isHidden = drawer.classList.contains('hidden');
+
+            drawer.classList.toggle('hidden');
+            toggleBtn.setAttribute('aria-expanded', isHidden);
+        }
+
+        // Full Cart Page Calculations
+        function renderFullCartPage() {
+            const container = document.getElementById('cart-page-items-list');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+
+            if (cart.length === 0) {
+                container.innerHTML = `<p class="p-8 text-center text-xs text-stone-500 bg-white rounded-2xl border border-aura-200">Your bag is currently empty.</p>`;
+            } else {
+                container.innerHTML = cart.map((item, idx) => `
+                    <div class="bg-white p-4 rounded-2xl border border-aura-200 flex items-center justify-between gap-4">
+                        <div class="flex items-center gap-4">
+                            <img src="${item.image}" alt="${item.name}" class="w-16 h-20 object-cover rounded-xl">
+                            <div>
+                                <h3 class="font-bold text-sm text-aura-900">${item.name}</h3>
+                                <span class="text-xs font-bold text-aura-900">$${item.price.toFixed(2)}</span>
+                            </div>
+                        </div>
+                        <div class="flex items-center gap-3">
+                            <button onclick="updateCartQty(${idx}, -1)" aria-label="Decrease item quantity" class="w-7 h-7 rounded-lg border border-stone-300 font-bold text-xs">-</button>
+                            <span class="text-xs font-bold">${item.qty}</span>
+                            <button onclick="updateCartQty(${idx}, 1)" aria-label="Increase item quantity" class="w-7 h-7 rounded-lg border border-stone-300 font-bold text-xs">+</button>
+                        </div>
+                    </div>
+                `).join('');
+            }
+
+            const discount = isPromoApplied ? subtotal * 0.10 : 0;
+            const finalTotal = subtotal - discount;
+
+            document.getElementById('cart-subtotal-val').textContent = `$${subtotal.toFixed(2)}`;
+            document.getElementById('cart-discount-val').textContent = `-$${discount.toFixed(2)}`;
+            document.getElementById('cart-discount-row').classList.toggle('hidden', !isPromoApplied);
+            document.getElementById('cart-total-val').textContent = `$${finalTotal.toFixed(2)}`;
+
+            const rem = Math.max(0, 100 - subtotal);
+            document.getElementById('cart-shipping-remaining').textContent = rem === 0 ? 'Free Shipping unlocked!' : `$${rem.toFixed(2)} away`;
+            document.getElementById('cart-shipping-bar').style.width = `${Math.min(100, (subtotal / 100) * 100)}%`;
+        }
+
+        function applyCartPromo() {
+            const val = document.getElementById('cart-promo-code').value.trim();
+            if (val === 'WELCOME10') {
+                isPromoApplied = true;
+                announceToScreenReader('10% promotional discount applied');
+                renderFullCartPage();
+            } else {
+                announceToScreenReader('Invalid promotional code');
+            }
+        }
+
+        // Wishlist System
+        function toggleWishlist(id) {
+            const p = products.find(item => item.id === id);
+            const idx = wishlist.indexOf(id);
+
+            if (idx > -1) {
+                wishlist.splice(idx, 1);
+                announceToScreenReader(`${p.name} removed from wishlist`);
+            } else {
+                wishlist.push(id);
+                announceToScreenReader(`${p.name} saved to wishlist`);
+            }
+
+            saveState();
+            updateWishlistState();
+            applyFilters();
+            renderWishlistPage();
+        }
+
+        function updateWishlistState() {
+            const badge = document.getElementById('wishlist-badge');
+            badge.textContent = wishlist.length;
+            badge.classList.toggle('opacity-0', wishlist.length === 0);
+        }
+
+        function renderWishlistPage() {
+            const container = document.getElementById('wishlist-page-grid');
+            const items = products.filter(p => wishlist.includes(p.id));
+
+            if (items.length === 0) {
+                container.innerHTML = `<p class="col-span-full text-center text-xs text-stone-500 py-12">No saved items in your wishlist.</p>`;
+                return;
+            }
+
+            container.innerHTML = items.map(p => createProductCardHTML(p)).join('');
+            lucide.createIcons();
+        }
+
+        // Checkout Summary
+        function renderCheckoutSummary() {
+            const summary = document.getElementById('checkout-items-summary');
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const discount = isPromoApplied ? subtotal * 0.10 : 0;
+
+            summary.innerHTML = cart.map(item => `
+                <div class="flex justify-between">
+                    <span>${item.name} (x${item.qty})</span>
+                    <span class="font-bold">$${(item.price * item.qty).toFixed(2)}</span>
+                </div>
+            `).join('');
+
+            document.getElementById('checkout-total-val').textContent = `$${(subtotal - discount).toFixed(2)}`;
+        }
+
+        function processCheckoutOrder(e) {
+            e.preventDefault();
+            cart = [];
+            saveState();
+            updateCartState();
+            document.getElementById('order-confirm-modal').classList.remove('hidden');
+            announceToScreenReader('Order successfully placed');
+        }
+
+        function closeConfirmModal() {
+            document.getElementById('order-confirm-modal').classList.add('hidden');
+            navigateTo('home');
+        }
+
+        function saveState() {
+            localStorage.setItem('aura_cart', JSON.stringify(cart));
+            localStorage.setItem('aura_wishlist', JSON.stringify(wishlist));
+        }
+
+        function handleNewsletterSubmit(e) {
+            e.preventDefault();
+            announceToScreenReader('Thank you for subscribing to our newsletter.');
+            e.target.reset();
+        }
+
+        function handleContactSubmit(e) {
+            e.preventDefault();
+            announceToScreenReader('Your contact message has been sent.');
+            e.target.reset();
+        }
+    </script>
+</body>
+</html>
